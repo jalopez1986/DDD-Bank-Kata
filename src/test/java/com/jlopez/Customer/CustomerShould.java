@@ -1,4 +1,4 @@
-package com.feature;
+package com.jlopez.Customer;
 
 import jlopez.Customer.actions.CreateCustomer;
 import jlopez.Customer.domain.Customer;
@@ -44,30 +44,6 @@ public class CustomerShould {
         assertThat(customer.getPersonnumber().getValue()).isEqualTo(personnumber);
         assertThat(customer.getMobilePhoneNumber().getValue()).isEqualTo(mobilePhoneNumber);
     }
-
-
-
-    @Test
-    public void a_customer_could_register_a_new_checking_account_using_its_personal_details() {
-        given_a_register_user();
-
-        when_register_a_new_checking_account();
-
-        then_the_checking_account_is_saved();
-    }
-
-    private void given_a_register_user() {
-
-    }
-
-    private void when_register_a_new_checking_account() {
-
-    }
-
-    private void then_the_checking_account_is_saved() {
-    }
-
-
 }
 
 
