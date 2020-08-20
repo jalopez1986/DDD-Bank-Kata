@@ -1,7 +1,8 @@
-package com.jlopez.CheckingAccount;
+package com.jlopez.CheckingAccount.actions;
 
 import com.jlopez.Customer.Mother.CustomerMother;
 import jlopez.CheckingAccount.actions.RegisterCheckingAccount;
+import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
 import jlopez.CheckingAccount.domain.CheckingAccountId;
 import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CheckingAccountShould {
+public class RegisterCheckingAccountShould {
 
     private Customers customers;
     private CheckingAccounts checkingAccounts;
@@ -55,9 +56,9 @@ public class CheckingAccountShould {
 
     }
 
+
     private void then_the_checking_account_is_saved() {
         assertThat(checkingAccounts.findById(ANY_CHECKING_ACCOUNT_ID)).isNotNull();
 
     }
-
 }

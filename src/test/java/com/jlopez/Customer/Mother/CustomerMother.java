@@ -12,7 +12,6 @@ public class CustomerMother {
     }
 
 
-
     private static FirstName anyFirstName() {
         return new FirstName("ANY_FIRST_NAME");
     }
