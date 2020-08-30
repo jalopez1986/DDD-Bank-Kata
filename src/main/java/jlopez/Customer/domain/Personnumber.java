@@ -1,6 +1,8 @@
 package jlopez.Customer.domain;
 
-public class Personnumber extends ValueObject<String>  {
+import jlopez.shared.domain.valueObjects.StringValueObject;
+
+public class Personnumber extends StringValueObject {
     public Personnumber(String value) {
         super(value);
     }

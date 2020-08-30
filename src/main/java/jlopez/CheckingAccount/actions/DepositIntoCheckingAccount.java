@@ -1,8 +1,6 @@
 package jlopez.CheckingAccount.actions;
 
-import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.domain.CheckingAccountId;
-import jlopez.CheckingAccount.domain.CheckingAccounts;
+import jlopez.CheckingAccount.domain.*;
 import jlopez.Customer.domain.Customers;
 
 public class DepositIntoCheckingAccount {
@@ -15,8 +13,8 @@ public class DepositIntoCheckingAccount {
         this.checkingAccounts = checkingAccounts;
     }
 
-    public void execute(CheckingAccountId checkingAccountId, int amount) {
+    public void execute(CheckingAccountId checkingAccountId, Amount amount, Description description) {
         CheckingAccount checkingAccount = checkingAccounts.findById(checkingAccountId);
-        checkingAccount.deposit(amount);
+        checkingAccount.deposit(amount, description);
     }
 }

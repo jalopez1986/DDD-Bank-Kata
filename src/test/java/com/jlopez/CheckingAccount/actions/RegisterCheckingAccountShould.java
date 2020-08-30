@@ -9,13 +9,21 @@ import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
 import jlopez.Customer.domain.CustomerId;
 import jlopez.Customer.domain.Customers;
 import jlopez.Customer.infrastructure.InMemoryCustomers;
+import jlopez.shared.domain.Clock;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 
+@RunWith(MockitoJUnitRunner.class)
 public class RegisterCheckingAccountShould {
 
     private Customers customers;
@@ -24,16 +32,21 @@ public class RegisterCheckingAccountShould {
     private CustomerId ANY_CUSTOMER_ID;
     private CheckingAccountId ANY_CHECKING_ACCOUNT_ID;
 
+    private static final String TODAY = "30/08/2020";
+    @Mock
+    Clock clock;
+
 
     @Before
     public void setUp() throws Exception {
         ANY_CUSTOMER_ID = new CustomerId(UUID.randomUUID());
         ANY_CHECKING_ACCOUNT_ID = new CheckingAccountId(UUID.randomUUID());
+        given(clock.now()).willReturn(LocalDate.parse(TODAY, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         customers = new InMemoryCustomers();
         checkingAccounts = new InMemoryCheckingAccounts();
 
-        registerCheckingAccount = new RegisterCheckingAccount(customers, checkingAccounts);
+        registerCheckingAccount = new RegisterCheckingAccount(checkingAccounts, clock);
     }
 
     @Test
@@ -43,22 +56,20 @@ public class RegisterCheckingAccountShould {
         when_register_a_new_checking_account();
 
         then_the_checking_account_is_saved();
-
     }
 
     private void given_a_customer_with_this_id(CustomerId id) {
         customers.save(CustomerMother.widthId(id));
-
     }
 
     private void when_register_a_new_checking_account() {
         registerCheckingAccount.execute(ANY_CHECKING_ACCOUNT_ID, ANY_CUSTOMER_ID);
-
     }
 
-
     private void then_the_checking_account_is_saved() {
-        assertThat(checkingAccounts.findById(ANY_CHECKING_ACCOUNT_ID)).isNotNull();
-
+        CheckingAccount account = checkingAccounts.findById(ANY_CHECKING_ACCOUNT_ID);
+        assertThat(account.getCheckingAccountId()).isEqualTo(ANY_CHECKING_ACCOUNT_ID);
+        assertThat(account.getCustomerId()).isEqualTo(ANY_CUSTOMER_ID);
+        assertThat(account.getOpeningDateAsString()).isEqualTo(TODAY);
     }
 }

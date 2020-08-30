@@ -25,7 +25,6 @@ public class CustomerShould {
     public void create_a_customer() {
         CreateCustomer createCustomer = new CreateCustomer(customers);
 
-
         UUID id = UUID.randomUUID();
         String firstName = "Jorge";
         String lastName = "Lopez";

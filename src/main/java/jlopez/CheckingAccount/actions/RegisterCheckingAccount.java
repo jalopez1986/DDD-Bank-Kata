@@ -3,20 +3,21 @@ package jlopez.CheckingAccount.actions;
 import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.domain.CheckingAccountId;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
+import jlopez.CheckingAccount.domain.OpeningDate;
 import jlopez.Customer.domain.CustomerId;
-import jlopez.Customer.domain.Customers;
+import jlopez.shared.domain.Clock;
 
 public class RegisterCheckingAccount {
-    private final Customers customers;
     private final CheckingAccounts checkingAccounts;
+    private Clock clock;
 
-    public RegisterCheckingAccount(Customers customers, CheckingAccounts checkingAccounts) {
-        this.customers = customers;
+    public RegisterCheckingAccount(CheckingAccounts checkingAccounts, Clock clock) {
         this.checkingAccounts = checkingAccounts;
+        this.clock = clock;
     }
 
     public void execute(CheckingAccountId checkingAccountId, CustomerId customerId) {
-        CheckingAccount account = new CheckingAccount(checkingAccountId, customerId);
+        CheckingAccount account = CheckingAccount.createNewAccount(checkingAccountId, customerId, new OpeningDate(clock.now()));
         checkingAccounts.save(account);
     }
 }

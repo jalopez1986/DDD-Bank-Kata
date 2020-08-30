@@ -1,15 +1,14 @@
-package jlopez.Customer.domain;
+package jlopez.CheckingAccount.domain;
 
 import java.util.Objects;
 
-public abstract class ValueObject<T> {
-    private T value;
-
-    public ValueObject(T value) {
+public class Amount {
+    private int value;
+    public Amount(int value) {
         this.value = value;
     }
 
-    public T getValue() {
+    public int getValue() {
         return this.value;
     }
 
@@ -17,8 +16,8 @@ public abstract class ValueObject<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ValueObject<?> that = (ValueObject<?>) o;
-        return Objects.equals(value, that.value);
+        Amount amount = (Amount) o;
+        return value == amount.value;
     }
 
     @Override

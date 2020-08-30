@@ -1,6 +1,8 @@
 package jlopez.Customer.domain;
 
-public class MobilePhoneNumber extends ValueObject<String>  {
+import jlopez.shared.domain.valueObjects.StringValueObject;
+
+public class MobilePhoneNumber extends StringValueObject {
     public MobilePhoneNumber(String value) {
         super(value);
     }

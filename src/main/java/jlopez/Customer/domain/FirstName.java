@@ -1,6 +1,8 @@
 package jlopez.Customer.domain;
 
-public class FirstName extends ValueObject<String>  {
+import jlopez.shared.domain.valueObjects.StringValueObject;
+
+public class FirstName extends StringValueObject {
     public FirstName(String value) {
         super(value);
     }
