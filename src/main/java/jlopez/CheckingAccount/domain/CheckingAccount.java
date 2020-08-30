@@ -12,16 +12,18 @@ public class CheckingAccount {
     private final OpeningDate openingDate;
 
     private List<Debit> debits;
+    private List<Credit> credits;
 
-    public CheckingAccount(CheckingAccountId checkingAccountId, CustomerId customerId, OpeningDate openingDate, List<Debit> debits) {
+    public CheckingAccount(CheckingAccountId checkingAccountId, CustomerId customerId, OpeningDate openingDate, List<Debit> debits, List<Credit> credits) {
         this.checkingAccountId = checkingAccountId;
         this.customerId = customerId;
         this.openingDate = openingDate;
-        this.debits = new ArrayList<>();
+        this.debits = debits;
+        this.credits = credits;
     }
 
     public static CheckingAccount createNewAccount(CheckingAccountId checkingAccountId, CustomerId customerId, OpeningDate openingDate) {
-        return  new CheckingAccount(checkingAccountId, customerId, openingDate, Collections.emptyList());
+        return new CheckingAccount(checkingAccountId, customerId, openingDate, new ArrayList<>(), new ArrayList<>());
     }
 
     public CustomerId getCustomerId() {
@@ -36,11 +38,20 @@ public class CheckingAccount {
         debits.add(new Debit(amount, description));
     }
 
+    public void withdraw(Amount amount, Description description) {
+        credits.add(new Credit(amount, description));
+    }
+
+
     public int getBalance() {
-        return debits.stream().mapToInt(debit->debit.getAmount()).sum();
+        int totalDebits = debits.stream().mapToInt(debit->debit.getAmount()).sum();
+        int totalCredits = credits.stream().mapToInt(credit->credit.getAmount()).sum();
+        return totalDebits - totalCredits;
     }
 
     public String getOpeningDateAsString() {
         return openingDate.asString();
     }
+
+
 }

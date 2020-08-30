@@ -10,14 +10,11 @@ import jlopez.Customer.domain.Customers;
 import jlopez.Customer.infrastructure.InMemoryCustomers;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
 public class DepositIntoCheckingAccountShould {
     private Customers customers;
     private CheckingAccounts checkingAccounts;
@@ -34,7 +31,7 @@ public class DepositIntoCheckingAccountShould {
         customers = new InMemoryCustomers();
         checkingAccounts = new InMemoryCheckingAccounts();
 
-        depositIntoCheckingAccount = new DepositIntoCheckingAccount(customers, checkingAccounts);
+        depositIntoCheckingAccount = new DepositIntoCheckingAccount(checkingAccounts);
     }
 
 
@@ -56,7 +53,7 @@ public class DepositIntoCheckingAccountShould {
 
         when_the_customer_deposits(new Amount(50), new Description("ANY_DESCRIPTION"));
 
-        then_the_balance_is(50);
+        then_the_balance_is(150);
     }
 
     private void given_a_customer_with_this_id(CustomerId id) {

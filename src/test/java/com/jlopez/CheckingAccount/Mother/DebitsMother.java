@@ -5,12 +5,11 @@ import jlopez.CheckingAccount.domain.Debit;
 import jlopez.CheckingAccount.domain.Description;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DebitsMother {
     public static List<Debit> empty() {
-        return Collections.emptyList();
+        return new ArrayList<>();
     }
 
     public static List<Debit> oneDebitOf(Amount amount) {

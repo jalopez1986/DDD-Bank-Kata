@@ -7,13 +7,15 @@ import jlopez.CheckingAccount.domain.OpeningDate;
 import jlopez.Customer.domain.CustomerId;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class CheckingAccountMother {
     public static CheckingAccount withIds(CheckingAccountId id, CustomerId customerId) {
         return new CheckingAccount(id,
                 customerId,
                 anyOpeningDate(),
-                DebitsMother.empty());
+                DebitsMother.empty(),
+                new ArrayList<>());
     }
 
 
@@ -21,7 +23,8 @@ public class CheckingAccountMother {
         return new CheckingAccount(id,
                 customerId,
                 anyOpeningDate(),
-                DebitsMother.oneDebitOf(amount)
+                DebitsMother.oneDebitOf(amount),
+                new ArrayList<>()
                 );
     }
 
