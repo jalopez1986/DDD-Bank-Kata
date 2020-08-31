@@ -10,6 +10,7 @@ public class CheckingAccount {
     private final CheckingAccountId checkingAccountId;
     private final CustomerId customerId;
     private final OpeningDate openingDate;
+    private State state;
 
     private List<Debit> debits;
     private List<Credit> credits;
@@ -20,18 +21,11 @@ public class CheckingAccount {
         this.openingDate = openingDate;
         this.debits = debits;
         this.credits = credits;
+        this.state = State.OPEN;
     }
 
     public static CheckingAccount createNewAccount(CheckingAccountId checkingAccountId, CustomerId customerId, OpeningDate openingDate) {
         return new CheckingAccount(checkingAccountId, customerId, openingDate, new ArrayList<>(), new ArrayList<>());
-    }
-
-    public CustomerId getCustomerId() {
-        return customerId;
-    }
-
-    public CheckingAccountId getCheckingAccountId() {
-        return checkingAccountId;
     }
 
     public void deposit(Amount amount, Description description) {
@@ -42,6 +36,19 @@ public class CheckingAccount {
         credits.add(new Credit(amount, description));
     }
 
+    public void close() {
+        if (getBalance() != 0) { throw new CannotCloseTheCheckingAccount(); }
+
+        state = State.CLOSE;
+    }
+
+    public CustomerId getCustomerId() {
+        return customerId;
+    }
+
+    public CheckingAccountId getCheckingAccountId() {
+        return checkingAccountId;
+    }
 
     public int getBalance() {
         int totalDebits = debits.stream().mapToInt(debit->debit.getAmount()).sum();
@@ -52,6 +59,20 @@ public class CheckingAccount {
     public String getOpeningDateAsString() {
         return openingDate.asString();
     }
+
+    public State getState() {
+        return state;
+    }
+
+    public enum State {
+        OPEN,
+        CLOSE
+    }
+
+    public class CannotCloseTheCheckingAccount extends RuntimeException {
+    }
+
+
 
 
 }

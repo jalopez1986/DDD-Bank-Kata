@@ -10,7 +10,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CheckingAccountMother {
-    public static CheckingAccount withIds(CheckingAccountId id, CustomerId customerId) {
+    public static CheckingAccount withIds(CheckingAccountId id,
+                                          CustomerId customerId) {
         return new CheckingAccount(id,
                 customerId,
                 anyOpeningDate(),
@@ -19,13 +20,28 @@ public class CheckingAccountMother {
     }
 
 
-    public static CheckingAccount withIdsAndOneDebitOf(CheckingAccountId id, CustomerId customerId, Amount amount) {
+    public static CheckingAccount withIdsAndOneDebitOf(CheckingAccountId id,
+                                                       CustomerId customerId,
+                                                       Amount amount) {
         return new CheckingAccount(id,
                 customerId,
                 anyOpeningDate(),
                 DebitsMother.oneDebitOf(amount),
                 new ArrayList<>()
-                );
+        );
+    }
+
+
+    public static CheckingAccount withIdsAndOneDebitOfAndOneCreditOf(CheckingAccountId id,
+                                                                     CustomerId customerId,
+                                                                     Amount debitAmount,
+                                                                     Amount creditAmount) {
+        return new CheckingAccount(id,
+                customerId,
+                anyOpeningDate(),
+                DebitsMother.oneDebitOf(debitAmount),
+                CreditsMother.oneCreditOf(creditAmount)
+        );
     }
 
 
