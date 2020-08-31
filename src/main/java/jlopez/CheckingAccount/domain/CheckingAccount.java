@@ -33,6 +33,8 @@ public class CheckingAccount {
     }
 
     public void withdraw(Amount amount, Description description) {
+        if (amount.getValue() > getBalance()) { throw new CannotWithdrawMoreThanTheExistingFunds(); }
+
         credits.add(new Credit(amount, description));
     }
 
@@ -70,6 +72,10 @@ public class CheckingAccount {
     }
 
     public class CannotCloseTheCheckingAccount extends RuntimeException {
+    }
+
+    public class CannotWithdrawMoreThanTheExistingFunds extends RuntimeException {
+
     }
 
 
