@@ -1,6 +1,9 @@
 package jlopez.CheckingAccount.domain;
 
-public class Transaction {
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.Description;
+
+public abstract class Transaction {
     protected Amount amount;
     protected Description description;
 

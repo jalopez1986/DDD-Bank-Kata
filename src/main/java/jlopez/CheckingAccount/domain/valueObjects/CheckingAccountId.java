@@ -1,4 +1,4 @@
-package jlopez.CheckingAccount.domain;
+package jlopez.CheckingAccount.domain.valueObjects;
 
 import jlopez.shared.domain.valueObjects.IdValueObject;
 

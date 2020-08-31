@@ -1,9 +1,12 @@
 package jlopez.CheckingAccount.domain;
 
-import jlopez.Customer.domain.CustomerId;
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.Description;
+import jlopez.CheckingAccount.domain.valueObjects.OpeningDate;
+import jlopez.Customer.domain.valueObjects.CustomerId;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CheckingAccount {
@@ -77,8 +80,4 @@ public class CheckingAccount {
     public class CannotWithdrawMoreThanTheExistingFunds extends RuntimeException {
 
     }
-
-
-
-
 }

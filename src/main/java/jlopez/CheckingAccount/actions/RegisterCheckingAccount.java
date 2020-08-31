@@ -1,10 +1,10 @@
 package jlopez.CheckingAccount.actions;
 
 import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.domain.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
-import jlopez.CheckingAccount.domain.OpeningDate;
-import jlopez.Customer.domain.CustomerId;
+import jlopez.CheckingAccount.domain.valueObjects.OpeningDate;
+import jlopez.Customer.domain.valueObjects.CustomerId;
 import jlopez.shared.domain.Clock;
 
 public class RegisterCheckingAccount {

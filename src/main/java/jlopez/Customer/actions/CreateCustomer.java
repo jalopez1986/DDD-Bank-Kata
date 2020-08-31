@@ -1,6 +1,7 @@
 package jlopez.Customer.actions;
 
 import jlopez.Customer.domain.*;
+import jlopez.Customer.domain.valueObjects.*;
 
 import java.util.UUID;
 

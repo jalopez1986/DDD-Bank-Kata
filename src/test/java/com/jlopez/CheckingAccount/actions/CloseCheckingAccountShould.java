@@ -1,12 +1,12 @@
 package com.jlopez.CheckingAccount.actions;
 
 import com.jlopez.CheckingAccount.Mother.CheckingAccountMother;
-import jlopez.CheckingAccount.domain.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.domain.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
 import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
-import jlopez.Customer.domain.CustomerId;
+import jlopez.Customer.domain.valueObjects.CustomerId;
 import org.junit.Before;
 import org.junit.Test;
 

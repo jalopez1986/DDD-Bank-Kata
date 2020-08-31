@@ -1,5 +1,7 @@
 package jlopez.Customer.domain;
 
+import jlopez.Customer.domain.valueObjects.*;
+
 public class Customer {
     private final CustomerId id;
     private final FirstName firstName;

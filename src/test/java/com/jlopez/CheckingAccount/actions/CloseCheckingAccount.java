@@ -1,7 +1,7 @@
 package com.jlopez.CheckingAccount.actions;
 
 import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.domain.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
 
 public class CloseCheckingAccount {

@@ -1,4 +1,4 @@
-package jlopez.CheckingAccount.domain;
+package jlopez.CheckingAccount.domain.valueObjects;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

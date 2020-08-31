@@ -1,10 +1,10 @@
 package com.jlopez.CheckingAccount.Mother;
 
-import jlopez.CheckingAccount.domain.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.domain.CheckingAccountId;
-import jlopez.CheckingAccount.domain.OpeningDate;
-import jlopez.Customer.domain.CustomerId;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.OpeningDate;
+import jlopez.Customer.domain.valueObjects.CustomerId;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

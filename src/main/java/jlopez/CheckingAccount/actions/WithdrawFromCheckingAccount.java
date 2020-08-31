@@ -1,6 +1,9 @@
 package jlopez.CheckingAccount.actions;
 
 import jlopez.CheckingAccount.domain.*;
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
+import jlopez.CheckingAccount.domain.valueObjects.Description;
 
 public class WithdrawFromCheckingAccount {
     private CheckingAccounts checkingAccounts;

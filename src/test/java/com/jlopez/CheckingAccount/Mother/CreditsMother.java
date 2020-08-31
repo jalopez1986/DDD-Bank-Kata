@@ -1,8 +1,8 @@
 package com.jlopez.CheckingAccount.Mother;
 
-import jlopez.CheckingAccount.domain.Amount;
+import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.Credit;
-import jlopez.CheckingAccount.domain.Description;
+import jlopez.CheckingAccount.domain.valueObjects.Description;
 
 import java.util.ArrayList;
 import java.util.List;

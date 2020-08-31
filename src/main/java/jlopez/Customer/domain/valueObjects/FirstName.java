@@ -1,4 +1,4 @@
-package jlopez.Customer.domain;
+package jlopez.Customer.domain.valueObjects;
 
 import jlopez.shared.domain.valueObjects.StringValueObject;
 
