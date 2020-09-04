@@ -1,14 +1,12 @@
 package jlopez.CheckingAccount.infrastructure;
 
 import com.google.api.core.ApiFuture;
-import com.google.auth.oauth2.GoogleCredentials;
+
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.cloud.FirestoreClient;
+
 import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
 import jlopez.CheckingAccount.domain.Credit;
@@ -19,29 +17,16 @@ import jlopez.CheckingAccount.domain.valueObjects.Description;
 import jlopez.CheckingAccount.domain.valueObjects.OpeningDate;
 import jlopez.Customer.domain.valueObjects.CustomerId;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
-public class FirebaseCheckingAccount implements CheckingAccounts {
+public class FirebaseCheckingAccounts implements CheckingAccounts {
     Firestore db;
 
-
-    public FirebaseCheckingAccount() throws IOException {
-        FileInputStream serviceAccount =
-                new FileInputStream("./ServiceAccountKey.json");
-
-        FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://ddd-bank-kata.firebaseio.com")
-                .build();
-
-        FirebaseApp.initializeApp(options);
-
-        db = FirestoreClient.getFirestore();
+    public FirebaseCheckingAccounts() {
+        db = FirebaseAppManager.getFirestore();
     }
 
     @Override
@@ -111,8 +96,9 @@ public class FirebaseCheckingAccount implements CheckingAccounts {
         OpeningDate openingDate = new OpeningDate(LocalDate.parse(document.getString("OpeningDate"), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         List<Debit> debits = arrayToDebits((List<String>)document.get("Debits"));
         List<Credit> credits = arrayToCredits((List<String>)document.get("Credits"));
+        CheckingAccount.State state = checkingAccountStateFromString(document.getString("State"));
 
-        return new CheckingAccount(checkingAccountId, customerId, openingDate, debits, credits, CheckingAccount.State.OPEN);
+        return new CheckingAccount(checkingAccountId, customerId, openingDate, debits, credits, state);
     }
 
     private List<Debit> arrayToDebits(List<String> debits) {
@@ -133,5 +119,11 @@ public class FirebaseCheckingAccount implements CheckingAccounts {
         }
 
         return  creditsTransformed;
+    }
+
+    private CheckingAccount.State checkingAccountStateFromString(String state) {
+        if (state.equalsIgnoreCase("open")) { return CheckingAccount.State.OPEN; }
+
+        return  CheckingAccount.State.CLOSE;
     }
 }

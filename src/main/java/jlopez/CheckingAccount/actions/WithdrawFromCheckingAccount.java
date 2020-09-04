@@ -16,5 +16,7 @@ public class WithdrawFromCheckingAccount {
         CheckingAccount checkingAccount = checkingAccounts.findById(checkingAccountId);
         checkingAccount.withdraw(amount, description);
 
+        checkingAccounts.save(checkingAccount);
+
     }
 }

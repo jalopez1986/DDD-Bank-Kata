@@ -1,4 +1,4 @@
-package com.jlopez.CheckingAccount.actions;
+package jlopez.CheckingAccount.actions;
 
 import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
@@ -15,5 +15,6 @@ public class CloseCheckingAccount {
         CheckingAccount checkingAccount = checkingAccounts.findById(checkingAccountId);
         checkingAccount.close();
 
+        checkingAccounts.save(checkingAccount);
     }
 }

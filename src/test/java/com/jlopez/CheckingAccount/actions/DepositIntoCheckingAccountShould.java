@@ -7,7 +7,7 @@ import jlopez.CheckingAccount.domain.*;
 import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
 import jlopez.CheckingAccount.domain.valueObjects.Description;
-import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
+import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
 import jlopez.Customer.domain.valueObjects.CustomerId;
 import jlopez.Customer.domain.Customers;
 import jlopez.Customer.infrastructure.InMemoryCustomers;
@@ -32,7 +32,8 @@ public class DepositIntoCheckingAccountShould {
         ANY_CHECKING_ACCOUNT_ID = new CheckingAccountId(UUID.randomUUID());
 
         customers = new InMemoryCustomers();
-        checkingAccounts = new InMemoryCheckingAccounts();
+        //checkingAccounts = new InMemoryCheckingAccounts();
+        checkingAccounts = new FirebaseCheckingAccounts();
 
         depositIntoCheckingAccount = new DepositIntoCheckingAccount(checkingAccounts);
     }

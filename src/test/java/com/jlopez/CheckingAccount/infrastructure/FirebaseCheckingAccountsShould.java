@@ -2,15 +2,13 @@ package com.jlopez.CheckingAccount.infrastructure;
 
 import com.jlopez.CheckingAccount.Mother.CheckingAccountMother;
 import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccount;
+import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FirebaseCheckingAccountsShould {
-    FirebaseCheckingAccount firebaseCheckingAccount;
+    FirebaseCheckingAccounts firebaseCheckingAccount;
     CheckingAccount ANY_CHECKING_ACCOUNT;
 
     @Test
@@ -53,11 +51,8 @@ public class FirebaseCheckingAccountsShould {
     }
 
     private void given_a_firebaseCheckingAccount() {
-        try {
-            firebaseCheckingAccount = new FirebaseCheckingAccount();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        firebaseCheckingAccount = new FirebaseCheckingAccounts();
+
     }
 
 }

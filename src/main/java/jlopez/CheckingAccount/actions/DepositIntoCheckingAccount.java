@@ -15,5 +15,7 @@ public class DepositIntoCheckingAccount {
     public void execute(CheckingAccountId checkingAccountId, Amount amount, Description description) {
         CheckingAccount checkingAccount = checkingAccounts.findById(checkingAccountId);
         checkingAccount.deposit(amount, description);
+
+        checkingAccounts.save(checkingAccount);
     }
 }

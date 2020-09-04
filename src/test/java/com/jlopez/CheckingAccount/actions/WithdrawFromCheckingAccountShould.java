@@ -6,7 +6,7 @@ import jlopez.CheckingAccount.domain.*;
 import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
 import jlopez.CheckingAccount.domain.valueObjects.Description;
-import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
+import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
 import jlopez.Customer.domain.valueObjects.CustomerId;
 
 import org.junit.Before;
@@ -30,7 +30,8 @@ public class WithdrawFromCheckingAccountShould {
         ANY_CUSTOMER_ID = new CustomerId(UUID.randomUUID());
         ANY_CHECKING_ACCOUNT_ID = new CheckingAccountId(UUID.randomUUID());
 
-        checkingAccounts = new InMemoryCheckingAccounts();
+        //checkingAccounts = new InMemoryCheckingAccounts();
+        checkingAccounts = new FirebaseCheckingAccounts();
 
         withdrawFromCheckingAccount = new WithdrawFromCheckingAccount(checkingAccounts);
     }
