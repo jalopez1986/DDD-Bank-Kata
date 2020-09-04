@@ -8,4 +8,6 @@ public class CheckingAccountId extends IdValueObject {
     public CheckingAccountId(UUID value) {
         super(value);
     }
+
+
 }

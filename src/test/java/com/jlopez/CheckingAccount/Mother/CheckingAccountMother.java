@@ -8,6 +8,7 @@ import jlopez.Customer.domain.valueObjects.CustomerId;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class CheckingAccountMother {
     public static CheckingAccount withIds(CheckingAccountId id,
@@ -16,7 +17,9 @@ public class CheckingAccountMother {
                 customerId,
                 anyOpeningDate(),
                 DebitsMother.empty(),
-                new ArrayList<>());
+                new ArrayList<>(),
+                CheckingAccount.State.OPEN
+        );
     }
 
 
@@ -27,7 +30,8 @@ public class CheckingAccountMother {
                 customerId,
                 anyOpeningDate(),
                 DebitsMother.oneDebitOf(amount),
-                new ArrayList<>()
+                new ArrayList<>(),
+                CheckingAccount.State.OPEN
         );
     }
 
@@ -40,13 +44,45 @@ public class CheckingAccountMother {
                 customerId,
                 anyOpeningDate(),
                 DebitsMother.oneDebitOf(debitAmount),
-                CreditsMother.oneCreditOf(creditAmount)
+                CreditsMother.oneCreditOf(creditAmount),
+                CheckingAccount.State.OPEN
         );
     }
 
 
+    public static CheckingAccount randomCheckingAccount() {
+        return new CheckingAccount(anyCheckingAccountId(),
+                anyCustomerId(),
+                anyOpeningDate(),
+                DebitsMother.empty(),
+                CreditsMother.empty(),
+                CheckingAccount.State.OPEN
+        );
+    }
+
+    public static CheckingAccount randomCheckingAccountsWithDebitsAndCredits() {
+        return new CheckingAccount(anyCheckingAccountId(),
+                anyCustomerId(),
+                anyOpeningDate(),
+                DebitsMother.randomDebits(),
+                CreditsMother.randomCredits(),
+                CheckingAccount.State.OPEN
+        );
+    }
+
+
+
+
     private static OpeningDate anyOpeningDate() {
         return new OpeningDate(LocalDate.now());
+    }
+
+    private static CheckingAccountId anyCheckingAccountId() {
+        return new CheckingAccountId(UUID.randomUUID());
+    }
+
+    private static CustomerId anyCustomerId() {
+        return new CustomerId(UUID.randomUUID());
     }
 
 }

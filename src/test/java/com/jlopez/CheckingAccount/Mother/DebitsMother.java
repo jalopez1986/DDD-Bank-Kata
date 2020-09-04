@@ -22,4 +22,13 @@ public class DebitsMother {
     private static Description anyDescription() {
         return new Description("ANY_DESCRIPTION");
     }
+
+    public static List<Debit> randomDebits() {
+        List<Debit> debits = new ArrayList<>();
+        debits.add(new Debit(new Amount(100), anyDescription()));
+        debits.add(new Debit(new Amount(200), anyDescription()));
+
+        return debits;
+    }
+
 }

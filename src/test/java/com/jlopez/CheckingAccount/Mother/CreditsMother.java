@@ -22,4 +22,14 @@ public class CreditsMother {
     private static Description anyDescription() {
         return new Description("ANY_DESCRIPTION");
     }
+
+    public static List<Credit> randomCredits() {
+        List<Credit> credits = new ArrayList<>();
+        credits.add(new Credit(new Amount(200), anyDescription()));
+        credits.add(new Credit(new Amount(100), anyDescription()));
+
+        return credits;
+
+
+    }
 }
