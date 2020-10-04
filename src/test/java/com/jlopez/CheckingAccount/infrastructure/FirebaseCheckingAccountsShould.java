@@ -1,6 +1,6 @@
 package com.jlopez.CheckingAccount.infrastructure;
 
-import com.jlopez.CheckingAccount.Mother.CheckingAccountMother;
+import com.jlopez.CheckingAccount.domain.CheckingAccountMother;
 import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
 import org.junit.Test;

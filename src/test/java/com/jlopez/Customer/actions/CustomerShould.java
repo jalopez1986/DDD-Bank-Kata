@@ -1,4 +1,4 @@
-package com.jlopez.Customer;
+package com.jlopez.Customer.actions;
 
 import jlopez.Customer.actions.CreateCustomer;
 import jlopez.Customer.domain.Customer;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerShould {
     @Mock Customers customers;
-   @Captor ArgumentCaptor<Customer> customerArgumentCaptor;
+    @Captor ArgumentCaptor<Customer> customerArgumentCaptor;
 
     @Test
     public void create_a_customer() {

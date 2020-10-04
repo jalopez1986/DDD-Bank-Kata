@@ -1,4 +1,4 @@
-package com.jlopez.CheckingAccount.Mother;
+package com.jlopez.CheckingAccount.domain;
 
 import jlopez.CheckingAccount.domain.valueObjects.Amount;
 import jlopez.CheckingAccount.domain.Credit;

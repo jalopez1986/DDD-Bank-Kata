@@ -1,11 +1,11 @@
 package com.jlopez.CheckingAccount.actions;
 
-import com.jlopez.Customer.Mother.CustomerMother;
+import com.jlopez.Customer.domain.CustomerMother;
 import jlopez.CheckingAccount.actions.RegisterCheckingAccount;
 import jlopez.CheckingAccount.domain.CheckingAccount;
 import jlopez.CheckingAccount.domain.CheckingAccounts;
 import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
-import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
+import jlopez.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
 import jlopez.Customer.domain.valueObjects.CustomerId;
 import jlopez.Customer.domain.Customers;
 import jlopez.Customer.infrastructure.InMemoryCustomers;
@@ -44,8 +44,8 @@ public class RegisterCheckingAccountShould {
         given(clock.now()).willReturn(LocalDate.parse(TODAY, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         customers = new InMemoryCustomers();
-        //checkingAccounts = new InMemoryCheckingAccounts();
-        checkingAccounts = new FirebaseCheckingAccounts();
+        checkingAccounts = new InMemoryCheckingAccounts();
+        //checkingAccounts = new FirebaseCheckingAccounts();
 
         registerCheckingAccount = new RegisterCheckingAccount(checkingAccounts, clock);
     }

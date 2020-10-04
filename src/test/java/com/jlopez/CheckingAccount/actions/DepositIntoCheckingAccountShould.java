@@ -1,7 +1,7 @@
 package com.jlopez.CheckingAccount.actions;
 
-import com.jlopez.CheckingAccount.Mother.CheckingAccountMother;
-import com.jlopez.Customer.Mother.CustomerMother;
+import com.jlopez.CheckingAccount.domain.CheckingAccountMother;
+import com.jlopez.Customer.domain.CustomerMother;
 import jlopez.CheckingAccount.actions.DepositIntoCheckingAccount;
 import jlopez.CheckingAccount.domain.*;
 import jlopez.CheckingAccount.domain.valueObjects.Amount;

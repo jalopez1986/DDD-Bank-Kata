@@ -1,4 +1,4 @@
-package com.jlopez.Customer.Mother;
+package com.jlopez.Customer.domain;
 
 import jlopez.Customer.domain.*;
 import jlopez.Customer.domain.valueObjects.*;
