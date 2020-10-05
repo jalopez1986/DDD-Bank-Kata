@@ -1,7 +1,7 @@
 package com.jlopez.Customer.domain;
 
-import jlopez.Customer.domain.*;
-import jlopez.Customer.domain.valueObjects.*;
+import core.Customer.domain.*;
+import core.Customer.domain.valueObjects.*;
 
 public class CustomerMother {
     public static Customer widthId(CustomerId id) {

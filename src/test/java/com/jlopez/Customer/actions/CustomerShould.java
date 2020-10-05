@@ -1,8 +1,8 @@
 package com.jlopez.Customer.actions;
 
-import jlopez.Customer.actions.CreateCustomer;
-import jlopez.Customer.domain.Customer;
-import jlopez.Customer.domain.Customers;
+import core.Customer.actions.CreateCustomer;
+import core.Customer.domain.Customer;
+import core.Customer.domain.Customers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

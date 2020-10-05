@@ -1,8 +1,8 @@
 package com.jlopez.CheckingAccount.domain;
 
-import jlopez.CheckingAccount.domain.valueObjects.Amount;
-import jlopez.CheckingAccount.domain.Debit;
-import jlopez.CheckingAccount.domain.valueObjects.Description;
+import core.CheckingAccount.domain.valueObjects.Amount;
+import core.CheckingAccount.domain.Debit;
+import core.CheckingAccount.domain.valueObjects.Description;
 
 import java.util.ArrayList;
 import java.util.List;

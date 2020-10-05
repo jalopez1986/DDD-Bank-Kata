@@ -1,13 +1,14 @@
 package com.jlopez.CheckingAccount.actions;
 
 import com.jlopez.CheckingAccount.domain.CheckingAccountMother;
-import jlopez.CheckingAccount.actions.WithdrawFromCheckingAccount;
-import jlopez.CheckingAccount.domain.*;
-import jlopez.CheckingAccount.domain.valueObjects.Amount;
-import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
-import jlopez.CheckingAccount.domain.valueObjects.Description;
-import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
-import jlopez.Customer.domain.valueObjects.CustomerId;
+import core.CheckingAccount.actions.WithdrawFromCheckingAccount;
+import core.CheckingAccount.domain.*;
+import core.CheckingAccount.domain.valueObjects.Amount;
+import core.CheckingAccount.domain.valueObjects.CheckingAccountId;
+import core.CheckingAccount.domain.valueObjects.Description;
+import core.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
+import core.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
+import core.Customer.domain.valueObjects.CustomerId;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,8 +31,8 @@ public class WithdrawFromCheckingAccountShould {
         ANY_CUSTOMER_ID = new CustomerId(UUID.randomUUID());
         ANY_CHECKING_ACCOUNT_ID = new CheckingAccountId(UUID.randomUUID());
 
-        //checkingAccounts = new InMemoryCheckingAccounts();
-        checkingAccounts = new FirebaseCheckingAccounts();
+        checkingAccounts = new InMemoryCheckingAccounts();
+        //checkingAccounts = new FirebaseCheckingAccounts();
 
         withdrawFromCheckingAccount = new WithdrawFromCheckingAccount(checkingAccounts);
     }

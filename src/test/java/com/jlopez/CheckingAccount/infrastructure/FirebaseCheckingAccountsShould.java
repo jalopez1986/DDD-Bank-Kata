@@ -1,8 +1,8 @@
 package com.jlopez.CheckingAccount.infrastructure;
 
 import com.jlopez.CheckingAccount.domain.CheckingAccountMother;
-import jlopez.CheckingAccount.domain.CheckingAccount;
-import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
+import core.CheckingAccount.domain.CheckingAccount;
+import core.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

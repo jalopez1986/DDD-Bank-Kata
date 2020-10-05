@@ -2,15 +2,16 @@ package com.jlopez.CheckingAccount.actions;
 
 import com.jlopez.CheckingAccount.domain.CheckingAccountMother;
 import com.jlopez.Customer.domain.CustomerMother;
-import jlopez.CheckingAccount.actions.DepositIntoCheckingAccount;
-import jlopez.CheckingAccount.domain.*;
-import jlopez.CheckingAccount.domain.valueObjects.Amount;
-import jlopez.CheckingAccount.domain.valueObjects.CheckingAccountId;
-import jlopez.CheckingAccount.domain.valueObjects.Description;
-import jlopez.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
-import jlopez.Customer.domain.valueObjects.CustomerId;
-import jlopez.Customer.domain.Customers;
-import jlopez.Customer.infrastructure.InMemoryCustomers;
+import core.CheckingAccount.actions.DepositIntoCheckingAccount;
+import core.CheckingAccount.domain.*;
+import core.CheckingAccount.domain.valueObjects.Amount;
+import core.CheckingAccount.domain.valueObjects.CheckingAccountId;
+import core.CheckingAccount.domain.valueObjects.Description;
+import core.CheckingAccount.infrastructure.FirebaseCheckingAccounts;
+import core.CheckingAccount.infrastructure.InMemoryCheckingAccounts;
+import core.Customer.domain.valueObjects.CustomerId;
+import core.Customer.domain.Customers;
+import core.Customer.infrastructure.InMemoryCustomers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,8 +33,8 @@ public class DepositIntoCheckingAccountShould {
         ANY_CHECKING_ACCOUNT_ID = new CheckingAccountId(UUID.randomUUID());
 
         customers = new InMemoryCustomers();
-        //checkingAccounts = new InMemoryCheckingAccounts();
-        checkingAccounts = new FirebaseCheckingAccounts();
+        checkingAccounts = new InMemoryCheckingAccounts();
+        //checkingAccounts = new FirebaseCheckingAccounts();
 
         depositIntoCheckingAccount = new DepositIntoCheckingAccount(checkingAccounts);
     }
